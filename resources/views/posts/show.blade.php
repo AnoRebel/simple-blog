@@ -27,7 +27,7 @@
         <li><a href="/posts">My Posts</a></li>
         <li><a href="/posts/create">Add Post</a></li>
         @if ($post->created_by == Auth::user()->id)
-          <li><a href="#deleteModal" data-toggle="modal">Delete</a></li>
+          <li><a href="#deleteModal" data-postid="{{ $post->id }}" data-toggle="modal">Delete</a></li>
         @endif
       </ol>
     </div>
@@ -59,26 +59,27 @@
 </div>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+<div class="modal modal-warning fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content bg-dark">
+    <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-danger" id="deleteModal">Warning</h5>
+        <h5 class="modal-title text-center" id="deleteModal">Warning</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span class="text-white-50" aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-white-50">
-        <h3>Are you sure you want to delete this post?</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <form action="{{ route('posts.destroy', [$post->id]) }}" method="POST">
+      <form action="{{ route('posts.destroy') }}" method="POST">
           @method('DELETE')
           @csrf
-          <button class="btn btn-danger" type="submit">Delete</button>
-        </form>
-      </div>
+        <div class="modal-body text-white-50">
+          <h3 class="text-center">Are you sure you want to delete this post?</h3>
+          <input type="hidden" name="post_id" id="post_id" value="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">No, don't</button>
+          <button class="btn btn-warning" type="submit">Yes, I'm Sure</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

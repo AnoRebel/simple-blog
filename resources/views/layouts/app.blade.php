@@ -10,9 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -85,5 +82,17 @@
 
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (e) {
+            var btn = $(e.relatedTarget)
+            var post_id = btn.data('postid')
+            var modal = $(this)
+
+            modal.find('.modal-body #post_id').val(post_id)
+        });
+    </script>
 </body>
 </html>

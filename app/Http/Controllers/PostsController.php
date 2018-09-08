@@ -125,14 +125,20 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    //public function destroy(Post $post)
+    public function destroy(Request $request)
     {
         //
         //dd($post);
-        $findPost = Post::find($post->id);
+        /*$findPost = Post::find($post->id);
         if($findPost->delete()){
             return redirect()->route('posts.index')
                     ->with('success', 'Post deleted successfully!');
+        }*/
+        $post = Post::findOrFail($request->post_id);
+        if($post->delete()) {
+            return redirect()->route('posts.index')
+                        ->with('success', 'Post deleted successfully!');
         }
 
         return back()->withInput()->with('errors', 'Post could not be deleted!');
