@@ -34,7 +34,7 @@
   </aside>
 </div>
 
-
+<!-- Comment Panel -->
 <div class="my-3 p-3 bg-dark rounded shadow-sm col-9 offset-1">
   <form method="POST" action="{{ route('comments.store') }}">
       @csrf
