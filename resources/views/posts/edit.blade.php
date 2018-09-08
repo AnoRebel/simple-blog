@@ -9,11 +9,21 @@
       <h1 class="h3 mb-3 font-weight-normal">Edit Post</h1>
       <div class="form-group">
         <label for="title" class="sr-only">Title</label>
-        <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{ $post->title }}" required="" autofocus="">
+        <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="title" placeholder="Enter Title" value="{{ $post->title }}" required="" autofocus="">
+        @if ($errors->has('title'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('title') }}</strong>
+            </span>
+        @endif
       </div>
       <div class="form-group">
         <label for="body">Content</label>
-        <textarea class="form-control" name="body" id="body" rows="6"> {{ $post->body }} </textarea>
+        <textarea class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" name="body" id="body" rows="6"> {{ $post->body }} </textarea>
+        @if ($errors->has('body'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('body') }}</strong>
+            </span>
+        @endif
       </div>
       <input class="btn btn-success float-right" value="Submit" type="submit">
     </form>
