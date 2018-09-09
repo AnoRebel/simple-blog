@@ -21,13 +21,13 @@
     </div> -->
 
     <div class="p-3">
-      <h4 class="font-italic">Actions</h4>
+      <h4 class="font-italic"><i class="far fa-sun"></i>Actions</h4>
       <ol class="list-unstyled">
-        <li><a href="/posts/{{ $post->id }}/edit">Edit</a></li>
-        <li><a href="/posts">My Posts</a></li>
-        <li><a href="/posts/create">Add Post</a></li>
+        <li><a href="/posts/{{ $post->id }}/edit"><i class="far fa-edit"></i> Edit</a></li>
+        <li><a href="/posts"><i class="far fa-envelope"></i> My Posts</a></li>
+        <li><a href="/posts/create"><i class="far fa-envelope-open"></i> Add Post</a></li>
         @if ($post->created_by == Auth::user()->id)
-          <li><a href="#deleteModal" data-postid="{{ $post->id }}" data-toggle="modal">Delete</a></li>
+          <li><a href="#deleteModal" data-postid="{{ $post->id }}" data-toggle="modal"><i class="far fa-trash-alt"></i> Delete</a></li>
         @endif
       </ol>
     </div>
@@ -38,7 +38,7 @@
 <div class="my-4 p-3 bg-dark rounded shadow-sm col-9 offset-1">
   <form method="POST" action="{{ route('comments.store') }}">
       @csrf
-      <h1 class="h3 mb-3 pb-2 text-white-50 font-weight-normal border-bottom">Comments <small>({{ $post->comments->count() }})</small> </h1>
+      <h1 class="h3 mb-3 pb-2 text-white-50 font-weight-normal border-bottom"><i class="far fa-comment-dots"></i> {{ $post->comments->count() }} Comments</h1>
       <div class="form-group">
         <textarea style="border: none; resize: none;" class="float-left col-9 text-white form-control{{ $errors->has('body') ? ' is-invalid' : '' }} bg-transparent border-bottom" placeholder="Write your comment.." required="" name="body" id="body" rows="1"></textarea>
         @if ($errors->has('body'))
@@ -50,14 +50,14 @@
       </div>
     </form>
     <br/>
-  <h4 class="border-bottom border-gray text-white-50 pb-2 pt-4 mb-0">Recent comments</h4>
+  <h4 class="border-bottom border-gray text-white-50 pb-2 pt-4 mb-0"><i class="far fa-comments"></i> Recent comments</h4>
   <div class="media text-white-50 pt-3">
     {{--@foreach($post->comments as $comment)--}}
-    <img data-src="holder.js/32x32?theme=thumb&amp;bg=6f42c1&amp;fg=6f42c1&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1657ffaf7f7%20text%20%7B%20fill%3A%236f42c1%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1657ffaf7f7%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%236f42c1%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2211.046875%22%20y%3D%2217.2%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
+    <img alt="32x32" class="mr-2 rounded" src="/avatar.png" style="width: 32px; height: 32px;">
     <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <strong class="d-block text-gray-dark">@username {{-- {{ $comment->user->name }} --}} on @date {{-- {{ $comment->created_at->diffForHumans() }} --}}</strong>
         <p> {{-- {{ $comment->body }} --}}Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <a class="float-right text-warning">Delete</a>
+      <a class="float-right text-warning"><i class="far fa-trash-alt"></i> Delete</a>
     </div>
     {{--@endforeach--}}
   </div>
@@ -67,11 +67,11 @@
 </div>
 
 <!-- Delete Modal -->
-<div class="modal modal-warning fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content bg-danger">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="deleteModal">Warning</h5>
+        <h5 class="modal-title text-center" id="deleteModal"><i class="far fa-sad-tear"></i> Warning</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span class="text-white-50" aria-hidden="true">&times;</span>
         </button>
@@ -80,12 +80,12 @@
           @method('DELETE')
           @csrf
         <div class="modal-body text-white-50">
-          <h3 class="text-center">Are you sure you want to delete this post?</h3>
+          <h3 class="text-center text-dark">Are you sure you want to delete this post?</h3>
           <input type="hidden" name="post_id" id="post_id" value="">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">No, don't</button>
-          <button class="btn btn-warning" type="submit">Yes, I'm Sure</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal"><i class="far fa-times-circle"></i> No, don't</button>
+          <button class="btn btn-warning" type="submit"><i class="far fa-trash-alt"></i> Yes, I'm Sure</button>
         </div>
       </form>
     </div>

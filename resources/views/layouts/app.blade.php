@@ -25,7 +25,7 @@
 </head>
 <body style="background: gray;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -52,10 +52,10 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
+                                <a class="nav-link" href="{{ route('posts.index') }}"><i class="far fa-comment-alt"></i> Posts</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="far fa-user-circle"></i>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
