@@ -23,9 +23,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background: gray;">
+<body style="background-image: url('http://1.bp.blogspot.com/-kfIIJbXUQK8/USJlLKmjawI/AAAAAAAA3YQ/gbLcI48qevc/s4000/Fondos-de-Pantalla-Lienzo-de-Madera-Negra-3D_Imagenes-de-Lienzos.jpg'); background-size: cover; background-position: center;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel sticky-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel sticky-top bg-transparent shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -52,15 +52,15 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('posts.index') }}"><i class="far fa-comment-alt"></i> Posts</a>
+                                <a class="nav-link text-white" href="{{ route('posts.index') }}"><i class="far fa-comment-alt"></i> Posts</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="far fa-user-circle"></i>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="far fa-user-circle"></i>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-right bg-transparent" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -95,12 +95,14 @@
   crossorigin="anonymous"></script>
 
     <script>
-        $('#deleteModal').on('show.bs.modal', function (e) {
-            var btn = $(e.relatedTarget)
-            var post_id = btn.data('postid')
-            var modal = $(this)
+        $( document ).ready(function() {
+            $('#deleteModal').on('show.bs.modal', function (e) {
+                var btn = $(e.relatedTarget)
+                var post_id = btn.data('postid')
+                var modal = $(this)
 
-            modal.find('.modal-body #post_id').val(post_id)
+                modal.find('.modal-body #post_id').val(post_id)
+            });
         });
     </script>
 </body>

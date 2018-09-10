@@ -9,7 +9,7 @@ class Comment extends Model
     //
     protected $fillable = [
     	'body',  
-    	'post-id', 
+    	'post_id', 
     	'created_by',
     ];
 

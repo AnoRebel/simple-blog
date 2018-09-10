@@ -3,13 +3,13 @@
 @section('content')
 
 <div class="row">
-  <div class="col-8 float-left">
-    <div class="jumbotron text-center">
-      <h1 class="blog-post-title">{{ $post->title }}</h1>
-      <p class="blog-post-meta">{{ $post->created_at }} by <a href="#">{{ $post->user->name }}</a></p>
+  <div class="col-8 float-left shadow">
+    <div class="jumbotron text-center bg-transparent shadow">
+      <h1 class="blog-post-title text-white-50">{{ $post->title }}</h1>
+      <p class="blog-post-meta text-white-50">{{ $post->created_at }} by <a href="#">{{ $post->user->name }}</a></p>
     </div>
 
-    <h4>{{ $post->body }}</h4>
+    <h4 class="text-white">{{ $post->body }}</h4>
 
   </div>
 
@@ -21,7 +21,7 @@
     </div> -->
 
     <div class="p-3">
-      <h4 class="font-italic"><i class="far fa-sun"></i>Actions</h4>
+      <h4 class="font-italic text-white-50"><i class="far fa-sun"></i>Actions</h4>
       <ol class="list-unstyled">
         <li><a href="/posts/{{ $post->id }}/edit"><i class="far fa-edit"></i> Edit</a></li>
         <li><a href="/posts"><i class="far fa-envelope"></i> My Posts</a></li>
@@ -35,7 +35,7 @@
 </div>
 
 <!-- Comment Panel -->
-<div class="my-4 p-3 bg-dark rounded shadow-sm col-9 offset-1">
+<div class="my-4 p-3 bg-dark rounded shadow-sm col-9 offset-1 bg-transparent">
   <form method="POST" action="{{ route('comments.store') }}">
       @csrf
       <h1 class="h3 mb-3 pb-2 text-white-50 font-weight-normal border-bottom"><i class="far fa-comment-dots"></i> {{ $post->comments->count() }} Comments</h1>
@@ -46,7 +46,7 @@
                 <strong>{{ $errors->first('body') }}</strong>
             </span>
         @endif
-        <input class="float-right col-2 btn btn-sm btn-outline-warning float-right" value="Comment" type="submit">
+        <button class="float-right m-1 col-2 btn btn-sm btn-outline-warning float-right" type="submit"><i class="far fa-comment"></i> Comment</button>
       </div>
     </form>
     <br/>
@@ -71,7 +71,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content bg-danger">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="deleteModal"><i class="far fa-sad-tear"></i> Warning</h5>
+        <h5 class="modal-title" id="deleteModal"><i class="far fa-sad-tear"></i> Warning</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span class="text-white-50" aria-hidden="true">&times;</span>
         </button>
