@@ -3,13 +3,13 @@
 @section('content')
 
 <div class="row">
-  <div class="col-8 float-left shadow">
-    <div class="jumbotron text-center bg-transparent shadow">
+  <div class="col-lg-8 col-md-8 col-sm-10 shadow-lg">
+    <div class="jumbotron text-center bg-transparent shadow-lg">
       <h1 class="blog-post-title text-white-50">{{ $post->title }}</h1>
       <p class="blog-post-meta text-white-50">{{ $post->created_at }} by <a href="#">{{ $post->user->name }}</a></p>
     </div>
 
-    <h4 class="text-white">{{ $post->body }}</h4>
+    <h4 class="text-white-50">{{ $post->body }}</h4>
 
   </div>
 
@@ -20,7 +20,7 @@
       <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum.</p>
     </div> -->
 
-    <div class="p-3">
+    <div class="p-3 col-lg-4 col-md-4">
       <h4 class="font-italic text-white-50"><i class="far fa-sun"></i>Actions</h4>
       <ol class="list-unstyled">
         <li><a href="/posts/{{ $post->id }}/edit"><i class="far fa-edit"></i> Edit</a></li>

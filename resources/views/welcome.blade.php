@@ -13,7 +13,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                /* background-color: #fff; */
+                background-image: url('http://1.bp.blogspot.com/-kfIIJbXUQK8/USJlLKmjawI/AAAAAAAA3YQ/gbLcI48qevc/s4000/Fondos-de-Pantalla-Lienzo-de-Madera-Negra-3D_Imagenes-de-Lienzos.jpg');
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
