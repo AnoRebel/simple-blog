@@ -23,7 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-image: url('http://1.bp.blogspot.com/-kfIIJbXUQK8/USJlLKmjawI/AAAAAAAA3YQ/gbLcI48qevc/s4000/Fondos-de-Pantalla-Lienzo-de-Madera-Negra-3D_Imagenes-de-Lienzos.jpg'); background-size: cover; background-position: center;">
+<body style="background-image: url('bckgrnd.jpg'); background-size: cover; background-position: center;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel sticky-top bg-transparent shadow-lg">
             <div class="container">
@@ -58,8 +58,12 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="far fa-user-circle"></i>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right bg-transparent" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right bg-transparent border-secondary" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->role_id == 1)
+                                        <a class="dropdown-item text-white" href="{{ route('logout') }}">
+                                            Test logout
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
