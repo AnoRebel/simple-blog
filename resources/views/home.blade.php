@@ -14,9 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
-                    <div>
-                        <p></p>
+                    <div class="text-center">
+                        <p>Hi {{ Auth::user()->name }}</p>
+                        <p>You are logged in now!</p>
                         <h3>Click <a href="{{ route('posts.index') }}">here</a> for posts</h3>
                     </div>
                 </div>

@@ -22,6 +22,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    
 </head>
 <body style="background-image: url('/bckgrnd.jpg'); background-size: cover; background-position: center;">
     <div id="app">
@@ -37,7 +41,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,11 +65,12 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right bg-transparent border-secondary" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->role_id == 1)
-                                        <a class="dropdown-item text-white" href="{{ route('logout') }}">
-                                            Test logout
+                                    <a class="dropdown-item text-white" href="{{ route('users.index') }}">
+                                            Profile
                                         </a>
-                                    @endif
+                                        <a class="dropdown-item text-white bg-transparent" href="">
+                                            {{ Auth::user()->role->name }}
+                                        </a>
                                     <a class="dropdown-item text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

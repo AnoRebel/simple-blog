@@ -18,9 +18,9 @@ class PostsController extends Controller
         //
         if (Auth::check()){
 
-            $allPosts = Post::with('user')->get();
+            $allPosts = Post::with('user')->orderBy('id', 'DESC')->get();
 
-            $posts = Post::where('created_by', Auth::user()->id)->get();
+            $posts = Post::where('created_by', Auth::user()->id)->orderBy('id', 'DESC')->get();
 
             return view('posts.index', ['posts' => $posts], ['allPosts' => $allPosts]);
             

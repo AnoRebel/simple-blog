@@ -58,22 +58,24 @@
       <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <strong class="d-block text-gray-dark"><a href="">{{ $comment->user->name }} </a> , {{ $comment->created_at->diffForHumans() }}</strong>
         <p> {{ $comment->body }}</p>
-        <a class="float-left text-success" data-toggle="collapse" href="#editComment" role="button" aria-expanded="false" aria-controls="editComment"><i class="far fa-edit"></i> Edit</a>
-        <div id="editComment" class="my-1 p-3 text-white-50 bg-dark rounded-bottom shadow-sm col-9 offset-1 collapse bg-transparent">
-          <form method="POST" action="{{ route('comments.update', [$comment->id]) }}">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-              <textarea style="border: none; resize: none;" class="float-left col-9 text-white form-control{{ $errors->has('body') ? ' is-invalid' : '' }} bg-transparent border-bottom" required="" name="body" id="body" rows="1"> {{ $comment->body }} </textarea>
-              @if ($errors->has('body'))
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('body') }}</strong>
-                  </span>
-              @endif
-              <button class="float-right m-1 col-2 btn btn-sm btn-outline-success float-right" type="submit"><i class="far fa-comment"></i> Update</button>
-            </div>
-          </form>
-        </div>
+        @if ($comment->created_by == Auth::user()->id)
+          <a class="float-left text-success" data-toggle="collapse" href="#editComment" role="button" aria-expanded="false" aria-controls="editComment"><i class="far fa-edit"></i> Edit</a>
+          <div id="editComment" class="my-1 p-3 text-white-50 bg-dark rounded-bottom shadow-sm col-9 offset-1 collapse bg-transparent">
+            <form method="POST" action="{{ route('comments.update', [$comment->id]) }}">
+              @csrf
+              @method('PUT')
+              <div class="form-group">
+                <textarea style="border: none; resize: none;" class="float-left col-9 text-white form-control{{ $errors->has('body') ? ' is-invalid' : '' }} bg-transparent border-bottom" required="" name="body" id="body" rows="1"> {{ $comment->body }} </textarea>
+                @if ($errors->has('body'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('body') }}</strong>
+                    </span>
+                @endif
+                <button class="float-right m-1 col-2 btn btn-sm btn-outline-success float-right" type="submit"><i class="far fa-comment"></i> Update</button>
+              </div>
+            </form>
+          </div>
+        @endif
         @if ($post->created_by == Auth::user()->id || Auth::user()->role_id == 1)
           <a href="#deleteComment" class="float-right text-warning" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="deleteComment"><i class="far fa-trash-alt"></i> Delete</a>
           <div id="deleteComment" class="my-1 p-3 py-4 text-white-50 border-warning rounded shadow-sm col-9 offset-1 bg-transparent collapse" >
