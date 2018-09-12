@@ -1,5 +1,5 @@
 @if (isset($errors) && count($errors) > 0)
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-warning alert-dismissible fade show gone" role="alert">
 	@foreach ($errors->all() as $error)
   		<li><strong>{!! $error !!}</strong></li>
     @endforeach

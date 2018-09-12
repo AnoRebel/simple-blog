@@ -40,6 +40,7 @@ class CommentsController extends Controller
         if (Auth::check()){
             $comment = Comment::create([
                 'body' => $request->input('body'),
+                'post_id' => $request->input('post_id'),
                 'created_by' => Auth::user()->id
             ]);
 
@@ -83,6 +84,23 @@ class CommentsController extends Controller
     public function update(Request $request, Comment $comment)
     {
         //
+        $commentUpdate = Comment::where('id', $comment->id)
+                            ->update([
+                                'body'=> $request->input('body')
+                            ]);
+
+        // if($commentUpdate)
+        // {
+        //     return redirect()->route('posts.show', ['post'=>$post->id])
+        //             ->with('success', 'Comment successfully updated!');
+
+        // }
+        if ($commentUpdate){
+                return back()->with('success', 'Comment successfully updated!');
+            }
+
+        // redirect
+        return back()->withInput();
     }
 
     /**
@@ -94,5 +112,9 @@ class CommentsController extends Controller
     public function destroy(Comment $comment)
     {
         //
+        $findComment = Comment::find($comment->id);
+        if($findComment->delete()){
+            return back()->with('success', 'Comment deleted successfully!');
+        }
     }
 }

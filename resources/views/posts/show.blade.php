@@ -41,6 +41,7 @@
       <h1 class="h3 mb-3 pb-2 text-white-50 font-weight-normal border-bottom"><i class="far fa-comment-dots"></i> {{ $post->comments->count() }} Comments</h1>
       <div class="form-group">
         <textarea style="border: none; resize: none;" class="float-left col-9 text-white form-control{{ $errors->has('body') ? ' is-invalid' : '' }} bg-transparent border-bottom" placeholder="Write your comment.." required="" name="body" id="body" rows="1"></textarea>
+        <input type="hidden" name="post_id" value="{{ $post->id }}">
         @if ($errors->has('body'))
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('body') }}</strong>
@@ -51,16 +52,42 @@
     </form>
     <br/>
   <h4 class="border-bottom border-gray text-white-50 pb-2 pt-4 mb-0"><i class="far fa-comments"></i> Recent comments</h4>
-  <div class="media text-white-50 pt-3">
-    {{--@foreach($post->comments as $comment)--}}
-    <img alt="32x32" class="mr-2 rounded" src="/avatar.png" style="width: 32px; height: 32px;">
-    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@username {{-- {{ $comment->user->name }} --}} on @date {{-- {{ $comment->created_at->diffForHumans() }} --}}</strong>
-        <p> {{-- {{ $comment->body }} --}}Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <a class="float-right text-warning"><i class="far fa-trash-alt"></i> Delete</a>
+  @foreach($post->comments as $comment)
+    <div class="media text-white-50 pt-3">
+      <img alt="32x32" class="mr-2 rounded" src="/avatar.png" style="width: 32px; height: 32px;">
+      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark"><a href="">{{ $comment->user->name }} </a> , {{ $comment->created_at->diffForHumans() }}</strong>
+        <p> {{ $comment->body }}</p>
+        <a class="float-left text-success" data-toggle="collapse" href="#editComment" role="button" aria-expanded="false" aria-controls="editComment"><i class="far fa-edit"></i> Edit</a>
+        <div id="editComment" class="my-1 p-3 text-white-50 bg-dark rounded-bottom shadow-sm col-9 offset-1 collapse bg-transparent">
+          <form method="POST" action="{{ route('comments.update', [$comment->id]) }}">
+            @csrf
+            @method('PUT')
+            <div class="form-group">
+              <textarea style="border: none; resize: none;" class="float-left col-9 text-white form-control{{ $errors->has('body') ? ' is-invalid' : '' }} bg-transparent border-bottom" required="" name="body" id="body" rows="1"> {{ $comment->body }} </textarea>
+              @if ($errors->has('body'))
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $errors->first('body') }}</strong>
+                  </span>
+              @endif
+              <button class="float-right m-1 col-2 btn btn-sm btn-outline-success float-right" type="submit"><i class="far fa-comment"></i> Update</button>
+            </div>
+          </form>
+        </div>
+        @if ($post->created_by == Auth::user()->id || Auth::user()->role_id == 1)
+          <a href="#deleteComment" class="float-right text-warning" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="deleteComment"><i class="far fa-trash-alt"></i> Delete</a>
+          <div id="deleteComment" class="my-1 p-3 py-4 text-white-50 border-warning rounded shadow-sm col-9 offset-1 bg-transparent collapse" >
+              <form action="{{ route('comments.destroy',  $comment->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="col-9 mb-0 p-2 border-gray float-left  "><h6 class="text-danger"><i class="far fa-sad-tear"></i> Warning, Are you sure you want to remove this comment? </h6></div>
+                <button class="col-3 btn btn-danger float-right " type="submit"><i class="far fa-trash-alt"></i> Yes</button>
+              </form>
+            </div>
+        @endif
+      </div>
     </div>
-    {{--@endforeach--}}
-  </div>
+  @endforeach
   <!--<small class="d-block text-right mt-3">
     <a href="#">All comments</a>
   </small>-->

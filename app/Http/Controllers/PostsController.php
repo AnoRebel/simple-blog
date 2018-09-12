@@ -106,7 +106,8 @@ class PostsController extends Controller
         $postUpdate = Post::where('id', $post->id)
                             ->update([
                                 'title'=> $request->input('title'),
-                                'body'=> $request->input('body')
+                                'body'=> $request->input('body'),
+                                'updated_by' => Auth::user()->id
                             ]);
 
         if($postUpdate)

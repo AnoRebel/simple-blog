@@ -23,7 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-image: url('bckgrnd.jpg'); background-size: cover; background-position: center;">
+<body style="background-image: url('/bckgrnd.jpg'); background-size: cover; background-position: center;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel sticky-top bg-transparent shadow-lg">
             <div class="container">
@@ -107,6 +107,12 @@
 
                 modal.find('.modal-body #post_id').val(post_id)
             });
+        });
+
+        $(function() {
+            setTimeout(function() {
+                $(".gone").slideUp("slow");
+            }, 5000);
         });
     </script>
 </body>
