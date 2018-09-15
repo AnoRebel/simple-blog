@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -15,7 +17,13 @@ class UsersController extends Controller
     public function index()
     {
         //
-        return view('users.index');
+        if (Auth::check())
+        {
+            $posts = Post::where('created_by', Auth::user()->id)->orderBy('id', 'DESC')->get();
+            return view('users.index', ['posts' => $posts]);
+        }
+
+        return view('auth.login');
     }
 
     /**
@@ -59,6 +67,7 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         //
+        return view('users.edit');
     }
 
     /**

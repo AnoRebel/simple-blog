@@ -2,22 +2,22 @@
 
 @section('content')
 
-<div class="container emp-profile">
+<div class="container emp-profile bg-transparent text-white">
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="{{ Auth::user()->photo ?? 'avatar.png' }}" class="avatar" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
-                                <input type="file" name="file"/>
+                                <input type="file" name="file" class="text-center center-block file-upload"/>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                                    <h5>
-                                        Kshiti Ghelani
+                                    <h5 class="h5-responsive text-white-50">
+                                        {{ Auth::user()->name }}
                                     </h5>
                                     <h6>
                                         Web Developer and Designer
@@ -34,21 +34,17 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <input type="submit" class="profile-edit-btn btn-success text-white" href="{{ route('users.edit',  Auth::user()->id) }}" name="btnAddMore" value="Edit"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>WORK LINK</p>
+                            <p class="text-white">WORK LINK</p>
                             <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
+                            <p class="text-white">SKILLS</p>
                             <a href="">Web Designer</a><br/>
                             <a href="">Web Developer</a><br/>
-                            <a href="">WordPress</a><br/>
-                            <a href="">WooCommerce</a><br/>
                             <a href="">PHP, .Net</a><br/>
                         </div>
                     </div>
@@ -60,7 +56,7 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti123</p>
+                                                <p>{{ Auth::user()->id }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -68,7 +64,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p>{{ Auth::user()->name }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -76,7 +72,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                <p>{{ Auth::user()->email }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -105,23 +101,23 @@
                                                 <p>Expert</p>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="col-md-6">
                                                 <label>Hourly Rate</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>10$/hr</p>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Total Projects</label>
+                                                <label>Total Posts</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>230</p>
+                                                <p>{{ $posts->count() }}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="col-md-6">
                                                 <label>English Level</label>
                                             </div>
@@ -136,12 +132,14 @@
                                             <div class="col-md-6">
                                                 <p>6 months</p>
                                             </div>
-                                        </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
+                                        </div> --}}
+                                	<div class="row">
+	                                    <div class="col-md-6">
+	                                        <label>Your Bio</label><br/>
+	                                    </div>
+	                                    <div class="col-md-6">
+	                                        <p>Your detail description</p>
+	                                    </div>
                                 </div>
                             </div>
                         </div>
