@@ -22,7 +22,7 @@
                                     <h6>
                                         Web Developer and Designer
                                     </h6>
-                                    <p class="proile-rating"><a href="{{ route('posts.index') }}">POSTS </a>: <small><span class="text-white-50">{{ $posts->count() }}</span></small></p>
+                                    <p class="proile-rating">POSTS : <small><span><a href="{{ route('posts.index') }}">{{ $posts->count() }}</a></span></small></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
