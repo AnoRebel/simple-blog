@@ -67,7 +67,8 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         //
-        return view('users.edit');
+        $user = Auth::user();
+        return view('users.edit', ['user'=>$user]);
     }
 
     /**

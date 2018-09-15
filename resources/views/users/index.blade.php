@@ -22,7 +22,7 @@
                                     <h6>
                                         Web Developer and Designer
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    <p class="proile-rating"><a href="{{ route('posts.index') }}">POSTS </a>: <small><span class="text-white-50">{{ $posts->count() }}</span></small></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn btn-success text-white" href="{{ route('users.edit',  Auth::user()->id) }}" name="btnAddMore" value="Edit"/>
+                        <a class=" btn profile-edit-btn btn-success text-white" href="/users/{{ Auth::user()->id }}/edit" name="btnAddMore">Edit<a/>
                     </div>
                 </div>
                 <div class="row">
