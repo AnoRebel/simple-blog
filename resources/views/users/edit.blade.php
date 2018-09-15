@@ -84,8 +84,8 @@
                       <div class="form-group">
                            <div class="col-12 text-center">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="fa fa-check"></i> Save</button>
+                               	<button class="btn btn-lg" type="reset"><i class="fa fa-redo-alt"></i> Reset</button>
                             </div>
                       </div>
                   </div>
@@ -116,8 +116,8 @@
                       <div class="form-group">
                            <div class="col-12 text-center">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="fa fa-check"></i> Save</button>
+                               	<button class="btn btn-lg" type="reset"><i class="fa fa-redo-alt"></i> Reset</button>
                             </div>
                       </div>
               	</form>
@@ -153,8 +153,8 @@
                       <div class="form-group">
                            <div class="col-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-lg btn-success pull-right" type="submit"><i class="fa fa-check"></i> Save</button>
+                               	<button class="btn btn-lg" type="reset"><i class="fa fa-redo-alt"></i> Reset</button>
                             </div>
                       </div>
               	</form>
