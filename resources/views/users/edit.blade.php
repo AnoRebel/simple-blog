@@ -12,7 +12,7 @@
               
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <img src="/avatar.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
         <input type="file" class="text-center profile-edit-btn btn btn-outline-info center-block file-upload">
       </div></hr><br>
@@ -56,14 +56,14 @@
                     <div class="form-group text-center">
                     	<div class="form-group">
                         <div class="col-6 offset-3 text-white">
-                             <label for="name" class="col-form-label"><h4>Username</h4></label>
+                             <label for="name" class="col-form-label"><h4>{{ __('Name') }}</h4></label>
                              <input type="text" class="form-control bg-transparent text-white" name="name" id="name" placeholder="{{ $user->name }}" title="Enter your user name.">
                          </div>
                     </div>
 
                       <div class="form-group">
                           <div class="col-6 offset-3 text-white">
-                              <label for="email" class="col-form-label"><h4>Email</h4></label>
+                              <label for="email" class="col-form-label"><h4>{{ __('E-Mail Address') }}</h4></label>
                               <input type="email" class="form-control bg-transparent text-white" name="email" id="email" placeholder="{{ $user->email }}" title="Enter your email.">
                           </div>
                       </div>
