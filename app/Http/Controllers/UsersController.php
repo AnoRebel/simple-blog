@@ -68,7 +68,8 @@ class UsersController extends Controller
     {
         //
         $user = Auth::user();
-        return view('users.edit', ['user'=>$user]);
+        $posts = Post::where('created_by', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('users.edit', ['user'=>$user, 'posts'=>$posts]);
     }
 
     /**
@@ -81,6 +82,18 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         //
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = bcrypt(request('password'));
+        $user->photo = request('photo');
+        $user->bio = request('bio');
+        $user->phone = request('phone');
+        $user->profession = request('profession');
+        $user->experience = request('experience');
+
+        $user->save();
+
+        return back();
     }
 
     /**

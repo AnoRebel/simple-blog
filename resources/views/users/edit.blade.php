@@ -24,8 +24,8 @@
           
           
           <ul class="list-group py-3">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item"><span><strong>Posts</strong></span> 37</li>
+            <li class="list-group-item text-muted bg-info">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+            <li class="list-group-item"><span><strong>Posts</strong></span> {{ $posts->count() }}</li>
           </ul> 
                
           <div class="panel panel-default text-center py-3">

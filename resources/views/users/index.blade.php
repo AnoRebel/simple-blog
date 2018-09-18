@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="{{ Auth::user()->photo ?? 'avatar.png' }}" class="avatar" alt=""/>
+                            <img src="{{ Auth::user()->photo ?? '/avatar.png' }}" class="avatar" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file" class="text-center center-block file-upload"/>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <a class=" btn profile-edit-btn btn-success text-white" href="/users/{{ Auth::user()->id }}/edit" name="btnAddMore">Edit<a/>
+                        <a class=" btn profile-edit-btn btn-success text-white" href="/users/{{ Auth::user()->id }}/edit">Edit<a/>
                     </div>
                 </div>
                 <div class="row">

@@ -5,7 +5,7 @@
 <div class="d-flex align-items-center p-3 text-white-50 bg-dark rounded-top shadow-sm col-9 offset-1 bg-transparent">
         <img class="mr-3" src="22.png" alt="48x48" width="48" height="48">
         <div class="lh-100">
-          <h6 class="mb-0 lh-100"><i class="far fa-user-circle"></i> <a href="">{{ Auth::user()->name }}</a></h6>
+          <h6 class="mb-0 lh-100"><i class="far fa-user-circle"></i> <a href="{{ route('users.index') }}">{{ Auth::user()->name }}</a></h6>
           <small>joined {{ Auth::user()->created_at->diffForHumans() }}</small>
         </div>
       </div>

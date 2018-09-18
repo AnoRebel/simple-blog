@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->integer('role_id')->unsigned()->default(2);
+            $table->longText('bio')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('experience')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
